@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title><%= htmlWebpackPlugin.options.title%></title>
+
+</head>
+<body>
+<div>
+    这是模板文件
+    <!--这是注释-->
+</div>
+<script type="text/javascript">
+    <%= compilation.assets[htmlWebpackPlugin.files.chunks.main.entry].source()%>
+</script>
+<% for(var key in htmlWebpackPlugin.files.chunks){%>
+    <% if(key!=="main"){%>
+        <script src="<%= htmlWebpackPlugin.files.chunks[key].entry%>"></script>
+    <% } %>
+
+<% }%>
+</body>
+</html>
